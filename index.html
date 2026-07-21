@@ -17,16 +17,13 @@
       --success: #16a34a;
       --radius: 12px;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
     }
-
     /* ── Header ── */
     header {
       background: var(--primary);
@@ -43,16 +40,20 @@
       font-weight: 900; font-size: 18px; color: var(--primary);
       flex-shrink: 0;
     }
+    header .logo-img {
+      height: 44px;
+      width: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
     header h1 { color: var(--white); font-size: 1.3rem; font-weight: 700; }
     header p  { color: #a8c4e0; font-size: 0.82rem; margin-top: 2px; }
-
     /* ── Main wrapper ── */
     main {
       max-width: 680px;
       margin: 32px auto;
       padding: 0 16px 60px;
     }
-
     /* ── Progress bar ── */
     .progress-wrap {
       margin-bottom: 28px;
@@ -90,7 +91,6 @@
     }
     .step-dot.active  { background: var(--accent); transform: scale(1.3); }
     .step-dot.done    { background: var(--primary); }
-
     /* ── Card ── */
     .card {
       background: var(--white);
@@ -98,12 +98,10 @@
       padding: 32px 28px;
       box-shadow: 0 2px 12px rgba(0,0,0,.07);
     }
-
     /* ── Step ── */
     .step { display: none; }
     .step.active { display: block; animation: fadeIn .3s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     .step-title {
       font-size: 1.2rem;
       font-weight: 700;
@@ -115,7 +113,6 @@
       color: var(--muted);
       margin-bottom: 24px;
     }
-
     /* ── Fields ── */
     .field { margin-bottom: 20px; }
     label {
@@ -126,7 +123,6 @@
       margin-bottom: 7px;
     }
     label .req { color: var(--accent); margin-left: 2px; }
-
     input[type="text"],
     input[type="tel"],
     input[type="email"],
@@ -149,10 +145,8 @@
       background: var(--white);
     }
     textarea { resize: vertical; min-height: 90px; }
-
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 500px) { .row-2 { grid-template-columns: 1fr; } }
-
     /* ── Chip selector ── */
     .chip-group {
       display: flex;
@@ -178,7 +172,6 @@
       border-color: var(--primary);
       color: var(--white);
     }
-
     /* ── Buttons ── */
     .btn-row {
       display: flex;
@@ -208,7 +201,6 @@
       flex: 1;
     }
     .btn-next:hover { background: #14304f; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,60,94,.3); }
-
     /* ── Final send buttons ── */
     .send-buttons { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
     .btn-whatsapp {
@@ -235,7 +227,6 @@
       text-decoration: none;
     }
     .btn-email:hover { background: #14304f; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,60,94,.35); }
-
     /* ── Success screen ── */
     #success-screen {
       display: none;
@@ -252,7 +243,6 @@
     }
     #success-screen h2 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; }
     #success-screen p  { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
-
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -263,17 +253,14 @@
   </style>
 </head>
 <body>
-
 <header>
-  <div class="logo-circle">G</div>
+  <img src="logo.png" alt="GACOM Inmobiliaria" class="logo-img">
   <div>
     <h1>GACOM Inmobiliaria</h1>
     <p>Encuentra tu propiedad ideal</p>
   </div>
 </header>
-
 <main>
-
   <!-- Progress -->
   <div class="progress-wrap" id="progress-wrap">
     <div class="progress-label">
@@ -290,14 +277,11 @@
       <div class="step-dot" id="dot-3"></div>
     </div>
   </div>
-
   <div class="card">
-
     <!-- ── Step 1: Contacto ── -->
     <div class="step active" id="step-0">
       <div class="step-title">👤 Tus datos de contacto</div>
       <div class="step-subtitle">Para enviarte las mejores opciones personalizadas.</div>
-
       <div class="field">
         <label>Nombre completo <span class="req">*</span></label>
         <input type="text" id="nombre" placeholder="Ej. María García" />
@@ -310,18 +294,15 @@
         <label>Correo electrónico</label>
         <input type="email" id="correo" placeholder="tu@correo.com (opcional)" />
       </div>
-
       <div class="btn-row">
         <div></div>
         <button class="btn btn-next" onclick="goNext(0)">Siguiente →</button>
       </div>
     </div>
-
     <!-- ── Step 2: Lo que busca ── -->
     <div class="step" id="step-1">
       <div class="step-title">🏠 ¿Qué tipo de propiedad buscas?</div>
       <div class="step-subtitle">Puedes seleccionar varias opciones.</div>
-
       <div class="field">
         <label>¿Venta o renta? <span class="req">*</span></label>
         <div class="chip-group">
@@ -330,7 +311,6 @@
           <input type="radio" name="operacion" id="op-ambas" value="Ambas"><label for="op-ambas">Ambas opciones</label>
         </div>
       </div>
-
       <div class="field">
         <label>Tipo de propiedad <span class="req">*</span></label>
         <div class="chip-group">
@@ -343,23 +323,19 @@
           <input type="checkbox" name="tipo" id="t-oficina" value="Oficina"><label for="t-oficina">Oficina</label>
         </div>
       </div>
-
       <div class="field">
         <label>Zona o colonia deseada <span class="req">*</span></label>
         <input type="text" id="zona" placeholder="Ej. San Pedro, Monterrey, CDMX..." />
       </div>
-
       <div class="btn-row">
         <button class="btn btn-back" onclick="goBack(1)">← Atrás</button>
         <button class="btn btn-next" onclick="goNext(1)">Siguiente →</button>
       </div>
     </div>
-
     <!-- ── Step 3: Presupuesto y detalles ── -->
     <div class="step" id="step-2">
       <div class="step-title">💰 Presupuesto y características</div>
       <div class="step-subtitle">Cuéntanos más para afinar la búsqueda.</div>
-
       <div class="field">
         <label>Presupuesto aproximado (MXN) <span class="req">*</span></label>
         <div class="row-2">
@@ -371,7 +347,6 @@
           </div>
         </div>
       </div>
-
       <div class="field">
         <label>Recámaras</label>
         <div class="chip-group">
@@ -382,7 +357,6 @@
           <input type="radio" name="recamaras" id="rna" value="No aplica"><label for="rna">No aplica</label>
         </div>
       </div>
-
       <div class="field">
         <label>Baños</label>
         <div class="chip-group">
@@ -393,7 +367,6 @@
           <input type="radio" name="banos" id="bna" value="No aplica"><label for="bna">No aplica</label>
         </div>
       </div>
-
       <div class="field">
         <label>Estacionamiento</label>
         <div class="chip-group">
@@ -403,18 +376,15 @@
           <input type="radio" name="estacionamiento" id="e0" value="No necesario"><label for="e0">No necesario</label>
         </div>
       </div>
-
       <div class="btn-row">
         <button class="btn btn-back" onclick="goBack(2)">← Atrás</button>
         <button class="btn btn-next" onclick="goNext(2)">Siguiente →</button>
       </div>
     </div>
-
     <!-- ── Step 4: Cierre ── -->
     <div class="step" id="step-3">
       <div class="step-title">📋 Últimos detalles</div>
       <div class="step-subtitle">Esto nos ayuda a entender mejor tu situación.</div>
-
       <div class="field">
         <label>¿Cuándo piensas comprar o rentar?</label>
         <div class="chip-group">
@@ -425,7 +395,6 @@
           <input type="radio" name="plazo" id="p5" value="Solo explorando"><label for="p5">Solo explorando</label>
         </div>
       </div>
-
       <div class="field">
         <label>Uso principal de la propiedad</label>
         <div class="chip-group">
@@ -437,16 +406,13 @@
           <input type="radio" name="uso" id="u6" value="Cerca de escuelas"><label for="u6">Cerca de escuelas</label>
         </div>
       </div>
-
       <div class="field">
         <label>Requisitos especiales o comentarios</label>
         <textarea id="comentarios" placeholder="Ej. Con jardín, planta baja, cerca de avenida principal, alberca, etc."></textarea>
       </div>
-
       <div class="btn-row" style="margin-bottom: 0;">
         <button class="btn btn-back" onclick="goBack(3)">← Atrás</button>
       </div>
-
       <div class="send-buttons">
         <a id="btn-wa" href="#" class="btn-whatsapp" onclick="sendWhatsApp(); return false;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -457,30 +423,22 @@
           Enviar por Email
         </a>
       </div>
-
     </div>
-
     <!-- ── Success ── -->
     <div id="success-screen">
       <div class="success-icon">✅</div>
       <h2>¡Información enviada!</h2>
       <p>Gracias. Un asesor de GACOM Inmobiliaria se pondrá en contacto contigo muy pronto con opciones que se adapten a lo que buscas.</p>
     </div>
-
   </div><!-- /card -->
-
   <footer>GACOM Inmobiliaria · Tu información es 100% confidencial</footer>
-
 </main>
-
 <script>
   const STEPS = 4;
   const STEP_NAMES = ['Tus datos', 'Qué buscas', 'Presupuesto', 'Detalles finales'];
   const WA_NUMBER = '528131024955';
   const EMAIL_TO  = 'contrerasa379@gmail.com';
-
   let current = 0;
-
   function updateProgress(step) {
     const pct = ((step + 1) / STEPS) * 100;
     document.getElementById('progress-fill').style.width = pct + '%';
@@ -491,7 +449,6 @@
       d.className = 'step-dot' + (i < step ? ' done' : i === step ? ' active' : '');
     }
   }
-
   function showStep(n) {
     document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
     document.getElementById('step-' + n).classList.add('active');
@@ -499,16 +456,13 @@
     current = n;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   function goNext(from) {
     if (!validateStep(from)) return;
     if (from < STEPS - 1) showStep(from + 1);
   }
-
   function goBack(from) {
     if (from > 0) showStep(from - 1);
   }
-
   function validateStep(step) {
     if (step === 0) {
       const n = document.getElementById('nombre').value.trim();
@@ -530,15 +484,12 @@
     }
     return true;
   }
-
   function collectData() {
     const get  = id => document.getElementById(id)?.value?.trim() || '';
     const radio = name => document.querySelector(`input[name="${name}"]:checked`)?.value || 'No especificado';
     const checks = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e => e.value).join(', ') || 'No especificado';
-
     const pmin = get('precio-min') ? `$${Number(get('precio-min')).toLocaleString('es-MX')} MXN` : 'No indicado';
     const pmax = get('precio-max') ? `$${Number(get('precio-max')).toLocaleString('es-MX')} MXN` : 'No indicado';
-
     return {
       nombre:    get('nombre'),
       telefono:  get('telefono'),
@@ -555,33 +506,25 @@
       comentarios: get('comentarios') || 'Ninguno',
     };
   }
-
   function buildText(d) {
     return (
 `🏠 *GACOM - Nueva Solicitud de Propiedad*
-
 👤 *Cliente:* ${d.nombre}
 📞 *Teléfono:* ${d.telefono}
 📧 *Correo:* ${d.correo}
-
 🔍 *Tipo de operación:* ${d.operacion}
 🏡 *Tipo de propiedad:* ${d.tipo}
 📍 *Zona deseada:* ${d.zona}
-
 💰 *Presupuesto mínimo:* ${d.pmin}
 💰 *Presupuesto máximo:* ${d.pmax}
-
 🛏 *Recámaras:* ${d.recamaras}
 🚿 *Baños:* ${d.banos}
 🚗 *Estacionamiento:* ${d.estacionamiento}
-
 ⏱ *Plazo de compra/renta:* ${d.plazo}
 🎯 *Uso de la propiedad:* ${d.uso}
-
 📝 *Comentarios especiales:* ${d.comentarios}`
     );
   }
-
   // WhatsApp's click-to-chat redirect (wa.me / api.whatsapp.com) corrupts
   // emoji characters in the "text" parameter, replacing them with the
   // Unicode replacement character (�). This strips emojis (and any stray
@@ -595,7 +538,6 @@
       .join('\n')
       .replace(/\n{3,}/g, '\n\n');
   }
-
   function sendWhatsApp() {
     if (!validateStep(3)) return;
     const d = collectData();
@@ -604,7 +546,6 @@
     window.open(url, '_blank');
     showSuccess();
   }
-
   function sendEmail() {
     if (!validateStep(3)) return;
     const d = collectData();
@@ -614,13 +555,11 @@
     window.location.href = url;
     setTimeout(showSuccess, 1000);
   }
-
   function showSuccess() {
     document.getElementById('progress-wrap').style.display = 'none';
     document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
     document.getElementById('success-screen').style.display = 'block';
   }
 </script>
-
 </body>
 </html>
