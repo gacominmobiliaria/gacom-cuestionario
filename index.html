@@ -582,10 +582,24 @@
     );
   }
 
+  // WhatsApp's click-to-chat redirect (wa.me / api.whatsapp.com) corrupts
+  // emoji characters in the "text" parameter, replacing them with the
+  // Unicode replacement character (�). This strips emojis (and any stray
+  // leading spaces left behind) ONLY for the WhatsApp message, so the
+  // page and the email keep their emojis intact.
+  function stripEmojisForWhatsApp(str) {
+    return str
+      .replace(/\p{Extended_Pictographic}️?/gu, '')
+      .split('\n')
+      .map(line => line.replace(/^[ \t]+/, ''))
+      .join('\n')
+      .replace(/\n{3,}/g, '\n\n');
+  }
+
   function sendWhatsApp() {
     if (!validateStep(3)) return;
     const d = collectData();
-    const text = buildText(d);
+    const text = stripEmojisForWhatsApp(buildText(d));
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
     showSuccess();
